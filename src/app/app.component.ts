@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { LoginModel } from './models/login.model';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: `<router-outlet></router-outlet>`,
 })
-export class AppComponent {
-  title = 'thecousine';
+export class AppComponent implements OnInit {
+  constructor() {}
+
+  ngOnInit(): void {
+    const loginInfo: LoginModel = {
+      isLoggedIn: false,
+      email: 'test@test.com',
+      password: '1234',
+    };
+    localStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+  }
 }

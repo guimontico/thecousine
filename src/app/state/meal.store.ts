@@ -34,7 +34,7 @@ export class MealStore extends ComponentStore<MealState> {
 
   private readonly setMeals = this.updater((state, meals: Meals) => ({
     ...state,
-    meals,
+    meals: meals,
   }));
 
   constructor(private readonly mealsService: MealsService) {
